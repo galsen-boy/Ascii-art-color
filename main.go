@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"main/utility"
 	"os"
 	"strings"
@@ -13,10 +12,13 @@ import (
 func main() {
 
 	if len(os.Args) == 2 || len(os.Args) > 4 {
-		if strings.HasPrefix( os.Args[1], "--color") || strings.HasPrefix( os.Args[1], "--output") {
+		if strings.HasPrefix(os.Args[1], "--color") || strings.HasPrefix(os.Args[1], "--output") {
 			fmt.Println("missing arguments")
+			fmt.Println("Usage: go run . [OPTION] [STRING]")
+			fmt.Println()
+			fmt.Println("EX: go run . --color=<color> <letters to be colored> \"something\"")
 			return
-		}else {
+		} else {
 			utility.AsciiArt()
 			return
 		}
@@ -90,7 +92,10 @@ func ColorCode(color string) string {
 	case "brown":
 		return Colors["Brown"]
 	default:
-		log.Fatalf("Invalid Color !!")
+		fmt.Println("Invalid Color !!")
+		fmt.Println("Usage: go run . [OPTION] [STRING]")
+		fmt.Println()
+		fmt.Println("EX: go run . --color=<color> <letters to be colored> \"something\"")
 		return Colors["Init"]
 	}
 }
@@ -124,6 +129,9 @@ func ReadBanner() {
 	scanner, err := ioutil.ReadFile(banner)
 	if err != nil {
 		fmt.Println("Invalid banner")
+		fmt.Println("Usage: go run . [OPTION] [STRING]")
+		fmt.Println()
+		fmt.Println("EX: go run . --color=<color> <letters to be colored> \"something\"")
 		return
 	}
 	data := bufio.NewScanner(strings.NewReader(string(scanner)))
@@ -157,6 +165,9 @@ func AsciiConvert(input, letterToColor string) {
 					}
 				} else {
 					fmt.Println("Invalid Input")
+					fmt.Println("Usage: go run . [OPTION] [STRING]")
+					fmt.Println()
+					fmt.Println("EX: go run . --color=<color> <letters to be colored> \"something\"")
 					return
 				}
 			}

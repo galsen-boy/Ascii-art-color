@@ -33,7 +33,7 @@ func ConvertStr(str string) string {
 				newStr += "\n"
 			}
 		} else if j != len(str)-1 && args != "\n" {
-			fmt.Println()
+			newStr += "\n"
 		}
 	}
 	return newStr

@@ -8,7 +8,7 @@ import (
 
 func AsciiArt() {
 
-	if len(os.Args) < 2 || len(os.Args) > 4 || len(os.Args) == 1{
+	if len(os.Args) < 2 || len(os.Args) > 4 || len(os.Args) == 1 {
 		PrintErr()
 		return
 	}
